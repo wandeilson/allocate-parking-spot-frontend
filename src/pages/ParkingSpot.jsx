@@ -2,13 +2,14 @@ import Menu from "./Menu";
 function ParkingSpot(){
     return(
         <div>
-            <h1>Cadastro de Vagas</h1>
-            <label>Número: </label>
-            <input type="text" />
-            <br /><br />
-            <button>Cadastrar</button>
-            <br /><br />
             <Menu/>
+            <form>
+                <h1>Cadastro de Vagas</h1>
+                <h4>Número: </h4>
+                <input type="text"  className="form-control" />
+                <br/>
+                <input  type='buttom' value='Cadastrar' className="btn btn-primary"></input>
+            </form>
         </div>
     )
 }

@@ -3,24 +3,25 @@ import Menu from "./Menu";
 function Apartment(){
     return(
         <div>
-            <h1>Cadastro de Apartamentos</h1>
-            <label>Bloco: </label>
-            <input type="text" />
-
-            <br />
-            <label>Número: </label>
-            <input type="text" />
-
-            <br/>
-            <label>Locador: </label>
-            <input type="text" />
-
-            <br/><br/>
-        
-            <button>Cadastrar</button>
-            <br /><br />
-
             <Menu/>
+            <form>
+                <h1>Cadastro de Apartamentos</h1>
+                <h4>Bloco: </h4>
+                <input type="text" className="form-control"/>
+
+                <br />
+                <h4>Número: </h4>
+                <input type="text"  className="form-control" />
+
+                <br/>
+                <h4>Locador: </h4>
+                <input type="text"  className="form-control" />
+
+                <br/>
+            
+                <input  type='buttom' value='Cadastrar' className="btn btn-primary"></input>
+                <br /><br />
+            </form>
         </div>
     )
 }

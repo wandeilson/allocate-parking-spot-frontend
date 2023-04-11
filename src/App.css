@@ -1,13 +1,13 @@
-#root {
-  max-width: 1280px;
-  padding: 2rem;
+form{
+  width: 500px;
+  margin: 30px auto;
   text-align: center;
 }
 
-input{
-  margin: 10px;
+form input{
+  margin-bottom: 5px;
 }
 
-
-
-
+form input[type='buttom']{
+  margin-right: 10px;
+}
