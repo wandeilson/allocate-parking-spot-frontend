@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Menu from "./Menu";
-import EditPkSpotModal from "./EditModal";
+import EditModal from "./EditModal";
 function ListSpots({ listParkingSpots }) {
 
     const [openModal, setOpenModal] = useState(false)
@@ -28,10 +28,10 @@ function ListSpots({ listParkingSpots }) {
                     }
                 </tbody>
             </table>
-            <EditPkSpotModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal) }  >
-                <h4>Número: </h4>
+            <EditModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal) }  >
+                <h5>Número: </h5>
                 <input type="text" className="form-control" name="number"  />
-            </EditPkSpotModal>
+            </EditModal>
         </div>
     )
 }

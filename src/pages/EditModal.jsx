@@ -14,7 +14,7 @@ function EditPkSpotModal ({isOpen, children, setModalOpen}){
         top:'50%',
         left:'50%',
         transform: 'translate(-50%,-50%)',
-        padding:'150px',
+        padding:'50px',
         backgroundColor:'#fff',
         borderRadius:'10px',
         color:'black'
@@ -26,8 +26,9 @@ function EditPkSpotModal ({isOpen, children, setModalOpen}){
                 <div style={MODAL_STYLE} >
                     <div> {children} </div>
                     <div className="buttons-modal">
-                        <button className="btn btn-primary btn-save-modal">Salvar</button>
-                        <button className="btn btn-secondary btn-close-modal" onClick={setModalOpen} >Fechar</button>
+                        <button className="btn btn-primary btn-save-modal">Atualizar</button>
+                        <span className="espaco"></span>
+                        <button className="btn btn-secondary btn-close-modal" onClick={setModalOpen} >Cancelar</button>
                     </div>
                 </div>
             </div>
