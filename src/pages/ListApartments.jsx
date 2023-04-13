@@ -1,41 +1,39 @@
 import Menu from "./Menu";
-function ListApartment({list}){
+function ListApartment({ listApartments }) {
 
-    const apt = {
-        block: '',
-        number: '',
-        locator: '',
-        numberParkingSpot: 0
-    }
+    // const apt = {
+    //     block: '',
+    //     number: '',
+    //     locator: '',
+    //     numberParkingSpot: 0
+    // }
 
-    let lista = []
+    // let lista = []
 
-        list.map((o, i) =>(
-            apt.block = o.block,
-            apt.number = o.number,
-            apt.locator = o.nameLocator,
-            apt.numberParkingSpot = o.parkingSpot.number,
-            console.log("teste"),
-            lista.push(apt)
-            
-        ))
+    // listApartments.map((o, i) => (
+    //     apt.block = o.block,
+    //     apt.number = o.number,
+    //     apt.locator = o.nameLocator,
+    //     apt.numberParkingSpot = o.parkingSpot ?? "",
+    //     console.log("teste"),
+    //     lista.push(apt)
 
-        console.log(lista);
-        apt.number = list.number;
-        apt.locator = list.nameLocator;
-        let n = list.parkingSpot; 
-        if( typeof n == 'undefined'){
-           apt.numberParkingSpot = '-'; 
-        }else{
-            apt.parkingSpot = list.parkingSpot.number;
-        }
-    
+    // ))
 
-   // console.log(lista)
-    
-    return(
-        <div>
-             <Menu/>
+    // console.log(lista);
+    // apt.number = listApartments.number;
+    // apt.locator = listApartments.nameLocator;
+    // let n = listApartments.parkingSpot;
+    // if (typeof n == 'undefined') {
+    //     apt.numberParkingSpot = '-';
+    // } else {
+    //     apt.parkingSpot = listApartments.parkingSpot.number;
+    // }
+
+    return (
+        <div className="list-apt">
+            <Menu />
+            <h1>Apartamentos cadastrados</h1>
             <table className="table" >
                 <thead>
                     <tr>
@@ -44,26 +42,26 @@ function ListApartment({list}){
                         <th>Número</th>
                         <th>Locador</th>
                         <th>Nº Vaga</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                {
-                    lista.map((obj, index) => (
-                        <tr key={index}>
-                            <td>{index+1}</td>
-                            <td>{obj.block}</td>
-                            <td>{obj.number}</td>
-                            <td>{obj.locator}</td>
-                            <td>{obj.numberParkingSpot}</td>
-                           
-                            <td> <button className=" btn btn-success" >Selecionar</button> </td>
+                    {
+                        listApartments.map((obj, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{obj.block}</td>
+                                <td>{obj.number}</td>
+                                <td>{obj.nameLocator}</td>
+                                <td>{obj.parkingSpot ? obj.parkingSpot.number : "Não adicionado"}</td>
+                                
+                                <td> <button className=" btn btn-success" >Editar</button> </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
 
-                    </tr>
-                    ) )
-                }
-            </tbody>
-        </table>
-       
         </div>
     )
 }

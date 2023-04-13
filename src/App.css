@@ -4,6 +4,39 @@ form{
   text-align: center;
 }
 
+/* .form-create-pkspot, .form-create-apt{
+  background-color: rgb(217, 221, 221);
+  
+} */
+
+.home > h1{
+  font-size: 90px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* .btn-save-modal{
+  padding-left: 0px;
+}
+
+.btn-close-modal{
+
+} */
+
+.buttons-modal{
+  padding-top: 220px;
+}
+
+
+.list-apt, .list-pkspot > h1{
+  text-align: center;
+}
+
+.table-pkspot{
+  text-align: center;
+}
+
 form input{
   margin-bottom: 5px;
 }

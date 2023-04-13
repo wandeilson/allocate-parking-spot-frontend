@@ -1,14 +1,14 @@
 import Menu from "./Menu";
-function ParkingSpot(){
+function ParkingSpot({eventKeyboard, create, obj}){
     return(
-        <div>
+        <div className="form-create-pkspot" >
             <Menu/>
             <form>
                 <h1>Cadastro de Vagas</h1>
                 <h4>Número: </h4>
-                <input type="text"  className="form-control" />
+                <input type="text" value={obj.number} onChange={eventKeyboard} className="form-control" name="number"  />
                 <br/>
-                <input  type='buttom' value='Cadastrar' className="btn btn-primary"></input>
+                <input type='buttom' onClick={create} value='Cadastrar' className="btn btn-primary"></input>
             </form>
         </div>
     )
