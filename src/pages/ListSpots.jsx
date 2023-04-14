@@ -1,9 +1,15 @@
 import { useState } from "react";
 import Menu from "./Menu";
 import EditModal from "./EditModal";
-function ListSpots({ listParkingSpots }) {
+function ListSpots({ listParkingSpots, selectPkSpot }) {
 
     const [openModal, setOpenModal] = useState(false)
+
+    function onClickBtEdit (index){
+        setOpenModal(true);
+        //selectPkSpot(index);
+    }
+
 
     return (
         <div className="list-pkspot">
@@ -13,6 +19,7 @@ function ListSpots({ listParkingSpots }) {
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Id</th>
                         <th>Número</th>
                     </tr>
                 </thead>
@@ -21,8 +28,9 @@ function ListSpots({ listParkingSpots }) {
                         listParkingSpots.map((obj, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
+                                <td>{obj.id}</td>
                                 <td>{obj.number}</td>
-                                <td> <button onClick={() => setOpenModal(true)} className=" btn btn-success" >Editar</button> </td>
+                                <td> <button onClick={() => {onClickBtEdit(index)}}  className=" btn btn-success" >Editar</button> </td>
                             </tr>
                         ))
                     }
@@ -30,7 +38,7 @@ function ListSpots({ listParkingSpots }) {
             </table>
             <EditModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal) }  >
                 <h5>Número: </h5>
-                <input type="text" className="form-control" name="number"  />
+                <input type="text" className="form-control" name="number" />
             </EditModal>
         </div>
     )

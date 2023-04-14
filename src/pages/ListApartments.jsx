@@ -42,6 +42,7 @@ function ListApartment({ listApartments }) {
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Id</th>
                         <th>Bloco</th>
                         <th>Número</th>
                         <th>Locador</th>
@@ -54,6 +55,7 @@ function ListApartment({ listApartments }) {
                         listApartments.map((obj, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
+                                <td>{obj.idApartment}</td>
                                 <td>{obj.block}</td>
                                 <td>{obj.number}</td>
                                 <td>{obj.nameLocator}</td>
@@ -74,7 +76,10 @@ function ListApartment({ listApartments }) {
                 <input type="text" className="form-control" />
                 <h5>Locador: </h5>
                 <input type="text" className="form-control" />
-                <form>
+                <h5>Insira o id da vaga: </h5>
+                <input type="text" className="form-control" />
+
+                {/* <form>
                     <fieldset>
                         <div class="form-group">
                             <label for="exampleSelect1" class="form-label mt-4">Selecione o Nº da vaga</label>
@@ -87,7 +92,7 @@ function ListApartment({ listApartments }) {
                             </select>
                         </div>
                     </fieldset>
-                </form>
+                </form> */}
 
             </EditModal>
 

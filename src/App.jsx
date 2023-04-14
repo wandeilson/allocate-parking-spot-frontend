@@ -53,6 +53,13 @@ function App(){
       .then(retorno_convertido => setParkingSpots(retorno_convertido));
     }, []);
 
+        //Select ParkingSpot
+        const selectPkSpot = (index) =>{
+          setObjParkingSpot(parkingSpots[index]);
+        }
+
+
+
     //Create ParkingSpot
     const createParkingSpot = () =>{
       fetch("http://localhost:8080/api/parking-spot",{
@@ -102,7 +109,7 @@ function App(){
           <Route path='/apartment' element={<Apartment  eventKeyboard={aoDigitarApt} create={createApartment} obj={objApartment} />} />
           <Route path='/parkingspot' element={<ParkingSpot  eventKeyboard={aoDigitarPkSpot} create={createParkingSpot} obj={objParkingSpot}  />}/>
           <Route path='/listapartment' element={<ListApartment listApartments={apartments}/>}/>
-          <Route path='/listspot'  element={<ListSpots listParkingSpots={parkingSpots} />}/>
+          <Route path='/listspot'  element={<ListSpots listParkingSpots={parkingSpots} select={selectPkSpot} />}/>
         </Routes>
       </BrowserRouter>
     </div>
