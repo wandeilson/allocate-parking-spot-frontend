@@ -3,36 +3,59 @@ import { useState } from "react";
 import EditModal from "./EditModal";
 function ListApartment({ listApartments }) {
 
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState(false);
+    const [idApartment, setIdApartment] = useState();
+    const [block, setBlock] = useState();
+    const [number, setNumber] = useState();
+    const [nameLocator, setNameLocator] = useState();
+    const [numberPkSpot, setNumberPkSpot] = useState();
 
-    // const apt = {
-    //     block: '',
-    //     number: '',
-    //     locator: '',
-    //     numberParkingSpot: 0
-    // }
+    function openEditor(obj) {
+        setIdApartment(obj.idApartment);
+        setBlock(obj.block);
+        setNumber(obj.number);
+        setNameLocator(obj.nameLocator);
+        setNumberPkSpot(obj.parkingSpot ? obj.parkingSpot.number : "");
+        setOpenModal(true);
+    }
 
-    // let lista = []
+    function deleteApt(obj){
+        setIdApartment(obj.idApartment);
+        setIdApartment(obj.idApartment);
+        deleteAptRequest();
+    }
 
-    // listApartments.map((o, i) => (
-    //     apt.block = o.block,
-    //     apt.number = o.number,
-    //     apt.locator = o.nameLocator,
-    //     apt.numberParkingSpot = o.parkingSpot ?? "",
-    //     console.log("teste"),
-    //     lista.push(apt)
+    function deleteAptRequest(){
+        const response = fetch(`http://localhost:8080/api/apartment/${idApartment}`, {
+            method: "DELETE"
+        });
+        return response;
+    };
 
-    // ))
+    async function updateApartment() {
+        const response = await fetch(`http://localhost:8080/api/apartment/${idApartment}`, {
+            method: "PUT",
+            body: JSON.stringify({block, nameLocator, number}),
+            headers:{
+                'Content-type':'application/json',
+                'Accept':'application/json'
+              }
+        });
+        updatePkSpotFromApartment();
+        setOpenModal(false);
 
-    // console.log(lista);
-    // apt.number = listApartments.number;
-    // apt.locator = listApartments.nameLocator;
-    // let n = listApartments.parkingSpot;
-    // if (typeof n == 'undefined') {
-    //     apt.numberParkingSpot = '-';
-    // } else {
-    //     apt.parkingSpot = listApartments.parkingSpot.number;
-    // }
+    }
+
+   async function updatePkSpotFromApartment() {
+        const response = await fetch(`http://localhost:8080/api/apartment/${idApartment}/${numberPkSpot}`, {
+            method: "PUT",
+            headers:{
+                'Content-type':'application/json',
+                'Accept':'application/json'
+              }
+        });
+
+    }
 
     return (
         <div className="list-apt">
@@ -61,38 +84,30 @@ function ListApartment({ listApartments }) {
                                 <td>{obj.nameLocator}</td>
                                 <td>{obj.parkingSpot ? obj.parkingSpot.number : "Não adicionado"}</td>
 
-                                <td> <button onClick={() => setOpenModal(true)} className=" btn btn-success" >Editar</button> </td>
+                                <td> <button onClick={() => deleteApt(obj)} className=" btn btn-warning" >Deletar</button> </td>
+                                <td> <button onClick={() => openEditor(obj)} className=" btn btn-success" >Editar</button> </td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
-            <EditModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}  >
+            <EditModal isOpen={openModal} setModalOpen={openModal}  >
                 <h5>Id: </h5>
-                <input type="text" className="form-control" />
+                <input type="text" disabled value={idApartment} className="form-control" />
                 <h5>Bloco: </h5>
-                <input type="text" className="form-control" />
+                <input type="text" onChange={(e) => setBlock(e.target.value)} value={block} className="form-control" />
                 <h5>Número: </h5>
-                <input type="text" className="form-control" />
+                <input type="text" onChange={(e) => setNumber(e.target.value)} value={number} className="form-control" />
                 <h5>Locador: </h5>
-                <input type="text" className="form-control" />
+                <input type="text" onChange={(e) => setNameLocator(e.target.value)} value={nameLocator} className="form-control" />
                 <h5>Insira o id da vaga: </h5>
-                <input type="text" className="form-control" />
+                <input type="text" onChange={(e) => setNumberPkSpot(e.target.value)} value={numberPkSpot} className="form-control" />
+                <div className="buttons-modal" >
+                    <button onClick={updateApartment}  className="btn btn-primary btn-save-modal">Atualizar</button>
+                    <span className="espaco"></span>
+                    <button className="btn btn-secondary btn-close-modal" onClick={() => setOpenModal(false)} >Cancelar</button>
 
-                {/* <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="exampleSelect1" class="form-label mt-4">Selecione o Nº da vaga</label>
-                            <select class="form-select" id="exampleSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </fieldset>
-                </form> */}
+                </div>
 
             </EditModal>
 

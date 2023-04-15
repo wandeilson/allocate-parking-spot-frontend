@@ -1,4 +1,4 @@
-function EditPkSpotModal ({isOpen, children, setModalOpen}){
+function EditPkSpotModal ({isOpen, children}){
     const BACKGOUND_STYLE = {
         position: 'fixed',
         top:'0',
@@ -25,11 +25,6 @@ function EditPkSpotModal ({isOpen, children, setModalOpen}){
             <div style={BACKGOUND_STYLE}>
                 <div style={MODAL_STYLE} >
                     <div> {children} </div>
-                    <div className="buttons-modal">
-                        <button className="btn btn-primary btn-save-modal">Atualizar</button>
-                        <span className="espaco"></span>
-                        <button className="btn btn-secondary btn-close-modal" onClick={setModalOpen} >Cancelar</button>
-                    </div>
                 </div>
             </div>
         )
