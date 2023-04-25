@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ParkingSpot from './pages/ParkingSpot';
-import Menu from './pages/Menu';
 import Home from './pages/Home';
 import Apartment from './pages/Apartment';
 import 'bootswatch/dist/cosmo/bootstrap.css';
@@ -8,6 +7,7 @@ import './App.css';
 import ListApartment from './pages/ListApartments';
 import { useEffect, useState } from 'react';
 import ListSpots from './pages/ListSpots';
+import Login from './pages/Login/index.jsx';
 
 function App(){
 
@@ -105,6 +105,7 @@ function App(){
     <div> 
       <BrowserRouter>
         <Routes>
+          <Route path='/login' element={<Login/>} />
           <Route path='/' element={<Home/>} />
           <Route path='/apartment' element={<Apartment  eventKeyboard={aoDigitarApt} create={createApartment} obj={objApartment} />} />
           <Route path='/parkingspot' element={<ParkingSpot  eventKeyboard={aoDigitarPkSpot} create={createParkingSpot} obj={objParkingSpot}  />}/>
