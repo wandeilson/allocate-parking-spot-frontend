@@ -1,6 +1,6 @@
-import Menu from "./Menu";
+import Menu from "../Menu/Menu";
 import { useState } from "react";
-import EditModal from "./EditModal";
+import EditModal from "../Modal/EditModal";
 function ListApartment({ listApartments }) {
 
     const [openModal, setOpenModal] = useState(false);

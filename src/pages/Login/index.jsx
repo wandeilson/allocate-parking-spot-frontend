@@ -1,40 +1,27 @@
-import { useState } from "react";
-/*import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-*/
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import arrowImg from "../../assets/arrow.svg";
-import logoImg from "../../assets/logo.svg";
-/*import { auth } from "../../services/firebaseConfig";*/
 import "./styles.css";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  /*
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-    */
-/*
-  function handleSignIn(e) {
-    e.preventDefault();
-    signInWithEmailAndPassword(email, password);
+  function sendLoginRequest(){
+    console.log("Enviando dados de login")
+      fetch("http://localhost:8080/api/auth/authenticate",{
+        method:'post',
+        body:JSON.stringify({email, password}),
+        headers:{
+          'Content-type':'application/json',
+          'Accept':'application/json'
+        }
+      })
   }
-  */
-  
 
- /* if (loading) {
-    return <p>carregando...</p>;
-  }
-  
-  if (user) {
-    return console.log(user);
-  }
-  */
   return (
     <div className="container">
       <header className="header">
-        <img src={logoImg} alt="Workflow" className="logoImg" />
+        <img className="logoImg" />
         <span>Por favor digite suas informações de login</span>
       </header>
 
@@ -61,10 +48,8 @@ export function Login() {
           />
         </div>
 
-        <a href="#">Esqueceu sua senha ?</a>
-
-        <button className="button" >
-          Entrar <img src={arrowImg} alt="->" />
+        <button className="button" type="button" onClick={ () => sendLoginRequest()} >
+          Entrar 
         </button>
         <div className="footer">
           <p>Você não tem uma conta?</p>

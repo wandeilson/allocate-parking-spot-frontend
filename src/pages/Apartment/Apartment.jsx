@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "../Menu/Menu";
 
 function Apartment({eventKeyboard, create, obj}){
     return(

@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ParkingSpot from './pages/ParkingSpot';
-import Home from './pages/Home';
-import Apartment from './pages/Apartment';
+import ParkingSpot from '../src/pages/Parking-spot/ParkingSpot'
+import Home from '../src/pages/Home/Home';
+import Apartment from '../src/pages/Apartment/Apartment';
 import 'bootswatch/dist/cosmo/bootstrap.css';
 import './App.css';
-import ListApartment from './pages/ListApartments';
+import ListApartment from '../src/pages/Apartment/ListApartments';
 import { useEffect, useState } from 'react';
-import ListSpots from './pages/ListSpots';
+import ListSpots from '../src/pages/Parking-spot/ListParkingSpots';
 import Login from './pages/Login/index.jsx';
+import Register from './pages/Register/index.jsx';
 
 function App(){
 
@@ -106,6 +107,7 @@ function App(){
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register/>} />
           <Route path='/' element={<Home/>} />
           <Route path='/apartment' element={<Apartment  eventKeyboard={aoDigitarApt} create={createApartment} obj={objApartment} />} />
           <Route path='/parkingspot' element={<ParkingSpot  eventKeyboard={aoDigitarPkSpot} create={createParkingSpot} obj={objParkingSpot}  />}/>

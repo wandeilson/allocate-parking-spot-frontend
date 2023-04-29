@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Menu from "./Menu";
-import EditModal from "./EditModal";
+import Menu from "../Menu/Menu";
+import EditModal from "../Modal/EditModal";
 function ListSpots({ listParkingSpots, selectPkSpot }) {
 
     const [openModal, setOpenModal] = useState(false);

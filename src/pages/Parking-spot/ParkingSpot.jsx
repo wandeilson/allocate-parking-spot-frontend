@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "../Menu/Menu";
 function ParkingSpot({eventKeyboard, create, obj}){
     return(
         <div className="form-create-pkspot" >
