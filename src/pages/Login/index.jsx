@@ -1,10 +1,44 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { validateEmail, validatePass } from "../../Utils/Validator";
+import UserService from '../../Services/UserService';
+
+const userService = new UserService();
+
+
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const user = {
+    email: email,
+    password: password
+  }
+
+
+
+  const handleSubmit = async (event) =>{
+    event.preventDefault();
+    try {
+      const response = await userService.login(user);
+      console.log('Responseo do login', response)
+      if(response === true){
+        alert("Usuário logado com sucesso")
+        //navegar para a home
+      }
+    }
+    catch(error){
+      alert("Algo deu errado" + error)
+    }
+  }
+
+  const validateInput = () =>{
+    return validateEmail(email) && validatePass(password);
+  }
+
+
 
   function sendLoginRequest(){
     console.log("Enviando dados de login")
@@ -48,7 +82,7 @@ export function Login() {
           />
         </div>
 
-        <button className="button" type="button" onClick={ () => sendLoginRequest()} >
+        <button className="button" type="button" onClick={handleSubmit} >
           Entrar 
         </button>
         <div className="footer">
